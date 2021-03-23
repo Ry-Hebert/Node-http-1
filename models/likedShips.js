@@ -2,11 +2,11 @@ const Mongoose = require('mongoose')
 const Schema = Mongoose.Schema
 
 const likedShipsSchema = new Schema({
-    shipLists: Number,
-    complete: Boolean,
+    shipID: Number,
+    manufacturer: String,
+    shipName: String,
     category: String,
     categoryID: Number,
-    id: Number
 })
 
 module.exports = Mongoose.model('todoItems', likedShipsSchema)
