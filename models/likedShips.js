@@ -2,7 +2,7 @@ const Mongoose = require('mongoose')
 const Schema = Mongoose.Schema
 
 const likedShipsSchema = new Schema({
-    shipID: String,
+    shipLists: Number,
     complete: Boolean,
     category: String,
     categoryID: Number,
