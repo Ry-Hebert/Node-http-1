@@ -26,6 +26,22 @@ server.get('/model/likedShips', (req, res) => {
     })
 })
 
+server.get('/model/user', (req, res) => {
+    LikedShips.find({}, (err, items) =>{
+
+        if(err){console.log(handleError(err))}
+        res.json(items)
+    })
+})
+
+server.get('/model/collections', (req, res) => {
+    LikedShips.find({}, (err, items) =>{
+
+        if(err){console.log(handleError(err))}
+        res.json(items)
+    })
+})
+
 server.post('/model/likedShips', (req, res) => {
     console.log(req.query)
     
@@ -48,9 +64,13 @@ server.post('/model/likedShips', (req, res) => {
     let catLength = catSize.length
 
     LikedShips.create({
-    todo: req.query.todo,
-    complete: req.query.complete,
+    shipID: req.query.shipID,
+    manufacturer: req.query.manufacturer,
     category: req.query.category,
+    storeImage: req.query.storeImage,
+    storeURL: req.query.storeURL,
+    brochure: req.query.brochure,
+    description: req.query.description,
     categoryID: catLength + 1
     })
 

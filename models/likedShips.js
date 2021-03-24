@@ -6,6 +6,10 @@ const likedShipsSchema = new Schema({
     manufacturer: String,
     shipName: String,
     category: String,
+    storeImage: String,
+    storeURL: String,
+    brochure: String,
+    description: String,
     categoryID: Number,
 })
 
