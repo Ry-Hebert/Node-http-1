@@ -26,6 +26,14 @@ server.get('/model/likedShips', (req, res) => {
     })
 })
 
+server.get('/model/likedShipsLength', (req, res) => {
+    LikedShips.find({}, (err, items) =>{
+        let x = items.length
+        if(err){console.log(handleError(err))}
+        res.json(x)
+    })
+})
+
 server.get('/model/user', (req, res) => {
     LikedShips.find({}, (err, items) =>{
 
@@ -71,6 +79,7 @@ server.post('/model/likedShips', (req, res) => {
     storeURL: req.query.storeURL,
     brochure: req.query.brochure,
     description: req.query.description,
+    numberOf: 1,
     categoryID: catLength + 1
     })
 
