@@ -4,6 +4,7 @@ const Express = require('express')
 const Mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const LikedShips = require('./models/likedShips')
+const UserLogin = require('./models/userLogin')
 
 const server = new Express()
 
@@ -34,8 +35,8 @@ server.get('/model/likedShipsLength', (req, res) => {
     })
 })
 
-server.get('/model/user', (req, res) => {
-    LikedShips.find({}, (err, items) =>{
+server.get('/model/userLogin', (req, res) => {
+    UserLogin.find({}, (err, items) =>{
 
         if(err){console.log(handleError(err))}
         res.json(items)
@@ -86,8 +87,32 @@ server.post('/model/likedShips', (req, res) => {
     res.sendStatus(200)
 })
 
+server.post('/model/userLogin', (req, res) => {
+    console.log(req.query)
+    
+    UserLogin.create({
+        userName: req.query.userName,
+        userID: req.query.userID,
+    })
+
+    res.sendStatus(200)
+})
+
 server.put('/model/likedShips/:id', (req, res) =>{
     LikedShips.findById(req.params.id, (err, items) =>{
+        if(err){console.log(handleError(err))}
+        items.update(req.query, (err) =>{
+            if(err){console.log(handleError(err))}
+            LikedShips.find({}, (err, itemsX) =>{
+                if(err){console.log(handleError(err))}
+                res.json(itemsX)
+            })
+        })
+    })
+})
+
+server.put('/model/userLogin/:id', (req, res) =>{
+    UserLogin.findById(req.params.id, (err, items) =>{
         if(err){console.log(handleError(err))}
         items.update(req.query, (err) =>{
             if(err){console.log(handleError(err))}

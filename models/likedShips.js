@@ -14,4 +14,4 @@ const likedShipsSchema = new Schema({
     categoryID: Number,
 })
 
-module.exports = Mongoose.model('todoItems', likedShipsSchema)
+module.exports = Mongoose.model('likedShips', likedShipsSchema)
