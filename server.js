@@ -11,9 +11,9 @@ const server = new Express()
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header.Access-Control-Allow-Methods( POST, GET, PUT, DELETE, OPTIONS)
+    res.header.add("Access-Control-Allow-Origin", "*");
+    res.header.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header.add('Access-Control-Allow-Methods' : 'POST, GET, PUT, DELETE, OPTIONS')
     next();
   })
 
