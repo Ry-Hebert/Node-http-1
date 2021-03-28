@@ -132,7 +132,7 @@ server.put('/model/userLogin/:id', (req, res) =>{
 
 server.delete('/model/likedShips/:id', (req, res) =>{
     console.log(`This is the delete route: ${req.params.id}`)
-    LikedShips.remove({id: req.params.id}, (err) => {
+    LikedShips.remove({shipID: req.params.id}, (err) => {
         if(err){console.log(handleError(err))}
         LikedShips.find({}, (err, items) =>{
             if(err){console.log(handleError(err))}
