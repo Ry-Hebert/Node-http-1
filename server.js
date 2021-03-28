@@ -8,8 +8,8 @@ const UserLogin = require('./models/userLogin')
 
 const server = new Express()
 
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
+server.use(Express.json());
+server.use(Express.urlencoded({ extended: true }));
 server.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
