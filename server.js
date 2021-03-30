@@ -25,7 +25,7 @@ server.listen(process.env.PORT || 3001, () =>{
 
 server.use('/', Express.static('./src'))
 
-server.get('/model/likedShips', (req, res) => {
+server.get('/model/likedShips', (req, res, next) => {
     LikedShips.find({}, (err, items) =>{
 
         if(err){console.log(handleError(err))}
@@ -33,7 +33,7 @@ server.get('/model/likedShips', (req, res) => {
     })
 })
 
-server.get('/model/likedShipsLength', (req, res) => {
+server.get('/model/likedShipsLength', (req, res, next) => {
     LikedShips.find({}, (err, items) =>{
         let x = items.length
         if(err){console.log(handleError(err))}
@@ -41,7 +41,7 @@ server.get('/model/likedShipsLength', (req, res) => {
     })
 })
 
-server.get('/model/userLogin', (req, res) => {
+server.get('/model/userLogin', (req, res, next) => {
     UserLogin.find({}, (err, items) =>{
 
         if(err){console.log(handleError(err))}
@@ -49,7 +49,7 @@ server.get('/model/userLogin', (req, res) => {
     })
 })
 
-server.get('/model/collections', (req, res) => {
+server.get('/model/collections', (req, res, next) => {
     LikedShips.find({}, (err, items) =>{
 
         if(err){console.log(handleError(err))}
@@ -57,7 +57,7 @@ server.get('/model/collections', (req, res) => {
     })
 })
 
-server.post('/model/likedShips', (req, res) => {
+server.post('/model/likedShips', (req, res, next) => {
     console.log(req.query)
     
     let qData = []
@@ -94,7 +94,7 @@ server.post('/model/likedShips', (req, res) => {
     res.sendStatus(200)
 })
 
-server.post('/model/userLogin', (req, res) => {
+server.post('/model/userLogin', (req, res, next) => {
     console.log(req.query)
     
     UserLogin.create({
@@ -105,7 +105,7 @@ server.post('/model/userLogin', (req, res) => {
     res.sendStatus(200)
 })
 
-server.put('/model/likedShips/:id', (req, res) =>{
+server.put('/model/likedShips/:id', (req, res, next) =>{
     LikedShips.findById(req.params.id, (err, items) =>{
         if(err){console.log(handleError(err))}
         items.update(req.query, (err) =>{
@@ -118,7 +118,7 @@ server.put('/model/likedShips/:id', (req, res) =>{
     })
 })
 
-server.put('/model/userLogin/:id', (req, res) =>{
+server.put('/model/userLogin/:id', (req, res, next) =>{
     UserLogin.findById(req.params.id, (err, items) =>{
         if(err){console.log(handleError(err))}
         items.update(req.query, (err) =>{
@@ -131,7 +131,7 @@ server.put('/model/userLogin/:id', (req, res) =>{
     })
 })
 
-server.delete('/model/likedShips/:id', (req, res) =>{
+server.delete('/model/likedShips/:id', (req, res, next) =>{
     console.log(`This is the delete route: ${req.params.id}`)
     LikedShips.remove({shipID: req.params.id}, (err) => {
         if(err){console.log(handleError(err))}
