@@ -81,13 +81,14 @@ server.post('/model/likedShips', (req, res) => {
     LikedShips.create({
     shipID: req.query.shipID,
     manufacturer: req.query.manufacturer,
+    shipName: req.query.name,
     category: req.query.category,
     storeImage: req.query.storeImage,
     storeURL: req.query.storeURL,
     brochure: req.query.brochure,
     description: req.query.description,
     numberOf: 1,
-    categoryID: catLength + 1
+    categoryID: catLength + 1,
     })
 
     res.sendStatus(200)
