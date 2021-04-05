@@ -121,3 +121,5 @@ This API also connects to a cloud hosted MongoDB Database.
 
     This endpoint allows users to delete a favorited item from the list.
 
+    Functionality for this can be found by clicking on the heart icon of items on the Favorites page. This will remove them from the list and refresh the list output.
+
